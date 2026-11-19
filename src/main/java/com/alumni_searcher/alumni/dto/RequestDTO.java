@@ -20,7 +20,7 @@ public class RequestDTO {
     private String designation;
 
 
-    @Min(value = 2015, message = "passout year must be greator than 2015")
-    @Max(value = 2026, message = "Passout year must be less than 2026" )
+    @Min(value = 2001, message = "passout year must be greator than 2015")
+    @Max(value = 2100, message = "Passout year must be less than 2026" )
     private Integer passoutYear;
 }

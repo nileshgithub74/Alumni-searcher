@@ -133,6 +133,8 @@ public class AlumniServiceImpl implements AlumniService {
         }
 
         List<Alumni> filteredAlumni = alumniList.stream()
+                .filter(x -> request.getUniversity() != null &&
+                        request.getUniversity().equalsIgnoreCase(x.getUniversity()))
                 .filter(x -> x.getCurrentRole() != null)
                 .toList();
 
