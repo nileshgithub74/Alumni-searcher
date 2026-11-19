@@ -41,10 +41,11 @@ public class PhantomBusterClient {
         body.put("id", phantomId);
 
 
-        String keywords = request.getUniversity().trim()
-                + " "
-                + request.getDesignation().trim();
-
+        String keywords = "\""
+                + request.getUniversity().trim()
+                + "\" \""
+                + request.getDesignation().trim()
+                + "\"";
 
         String searchUrl =
                 "https://www.linkedin.com/search/results/people/?keywords="
@@ -85,7 +86,7 @@ public class PhantomBusterClient {
                 .block();
     }
 
-    public   JsonNode fetchFinalizedContainers() {
+    public JsonNode fetchFinalizedContainers() {
 
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -100,7 +101,8 @@ public class PhantomBusterClient {
                 .bodyToMono(JsonNode.class)
                 .block();
     }
-    public  boolean containsContainer(
+
+    public boolean containsContainer(
             JsonNode response,
             String containerId
     ) {
